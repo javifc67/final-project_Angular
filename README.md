@@ -2,9 +2,9 @@
 
 to run you will need:
 
--mongodb
+-angular folder
+-server node.js folder whith '.env'
 -run npm install
--run ng serve
-
-state: @ngxs/devtools-plugin: "^3.4.3"
-ant-desing: ng-zorro-antd: "^7.3.2"
+-run ng serve in angular
+-run node index in node.js
+-mongodb
