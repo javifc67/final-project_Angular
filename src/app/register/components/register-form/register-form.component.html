@@ -1,0 +1,69 @@
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control>
+            <nz-input-group >
+            <input type="text" formControlName="fullName" nz-input placeholder="Username" />
+          </nz-input-group>
+
+          <nz-form-explain *ngIf="validateForm.get('fullName')?.dirty && validateForm.get('fullName')?.errors"
+            >Please input your username!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+          <nz-form-control>
+              <nz-input-group >
+              <input type="text" formControlName="twitterName" nz-input placeholder="Name in Twitter, ej: @example" />
+            </nz-input-group>
+  
+            <nz-form-explain *ngIf="validateForm.get('twitterName')?.dirty && validateForm.get('twitterName')?.errors"
+              >Please input Twitter name!</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+
+      <nz-form-item>
+          <nz-form-control>
+              <nz-input-group >
+              <input type="text" formControlName="email" nz-input placeholder="Email" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors"
+              >Please input your email!</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+            <nz-input-group >
+            <input formControlName="password" nz-input type="password" placeholder="Password" />
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
+            >Please input your Password!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+          <nz-form-control>
+              <nz-input-group >
+              <input formControlName="confirmPassword" nz-input type="password" placeholder="confirm your password" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('confirmPassword')?.dirty && validateForm.get('confirmPassword')?.errors"
+              >this password is different</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button  nz-button nzType="primary" >Register</button>
+            <span>
+              Or <a routerLink="/">
+                login!
+              </a>
+              
+            </span>
+        </nz-form-control>
+      </nz-form-item>
+    </form>

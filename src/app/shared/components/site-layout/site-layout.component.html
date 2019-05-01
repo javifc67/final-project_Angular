@@ -1,7 +1,14 @@
 
 
-<sa-site-layout-header nz-row></sa-site-layout-header>
+<nz-layout class="head">
+<sa-site-layout-header></sa-site-layout-header>
+<nz-layout class="main" >
 
-  <router-outlet >  </router-outlet>
+  <router-outlet class="mainContent">  </router-outlet>
 
-<sa-site-layout-footer nz-row></sa-site-layout-footer>
+</nz-layout>
+<sa-site-layout-footer></sa-site-layout-footer>
+</nz-layout>
+
+   
+

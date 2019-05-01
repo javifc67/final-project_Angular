@@ -12,6 +12,8 @@ import { FormComponent } from './components/forms/form.component';
 import { FormControlComponent } from './components/forms/form-control.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { HeroComponent } from './components/hero/hero.component';
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     FormComponent,
     FormControlComponent,
     PageNotFoundComponent,
+    HeroComponent,
+    InfoComponent
   ],
   imports: [CommonModule, RouterModule, NgZorroAntdModule],
   exports: [
@@ -36,6 +40,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     FormComponent,
     FormControlComponent,
     PageNotFoundComponent,
+    HeroComponent,
+    InfoComponent
     
   ]
 })

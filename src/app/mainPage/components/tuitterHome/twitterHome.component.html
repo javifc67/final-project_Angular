@@ -1,0 +1,29 @@
+<nz-content style="margin:16px;">
+    <div  style="padding:24px; min-height: 360px;">
+            <div *ngIf="( tweets$ | async );else auth">
+                
+                <textarea rows="4" nz-input [(ngModel)]="content" (keydown)="exploreKeyPressed($event)"></textarea>
+                <input id="date" [(ngModel)]="date" type="datetime-local" min="{{now}}" value="">
+                <button (click)="publish()" >publicar tweet</button>
+                <div class="TW">
+                    <div class="user">
+                            <ng-container *ngIf="(userData$ | async) as userData">
+                                    
+                                <sa-userTwitter [user]="userData"></sa-userTwitter>
+                                  </ng-container>  
+                    </div>
+                                <div class="tweets">
+
+                        <ng-container *ngFor="let item of (tweets$ | async)">
+                            
+                            <sa-tweet [tweet]="item"></sa-tweet>
+                            
+                        </ng-container>
+                    </div>
+                </div>
+        </div>
+        <ng-template #auth>Aún no estas autenticado con twitter.<a (click)="authTW()" > Pincha aquí para autenticarte </a></ng-template>
+        </div>
+    </nz-content>
+    
+

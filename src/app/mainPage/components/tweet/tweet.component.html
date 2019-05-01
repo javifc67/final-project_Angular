@@ -1,0 +1,21 @@
+<nz-card style="width: 90%;margin-top: 16px" [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+        <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
+          <nz-card-meta
+            [nzAvatar]="avatarTemplate"
+            nzTitle="{{tweet.user.name}}"
+            nzDescription="{{tweet.text}}"
+          ></nz-card-meta>
+        </nz-skeleton>
+      </nz-card>
+      <ng-template #avatarTemplate>
+        <nz-avatar nzSrc="{{tweet.user.profile_image_url}}"></nz-avatar>
+      </ng-template>
+      <ng-template #actionSetting>
+          <span *ngIf="rtCount == tweet.retweet_count; else retweeted">  <img src="assets/icon/retwitt-icon-blue.png" (click)="rt()" alt=""></span><ng-template #retweeted> <img src="assets/icon/retwitt-icon-green.png" alt="icon-notfollow"> </ng-template> {{rtCount}}
+      </ng-template>
+      <ng-template #actionEdit>
+          <span *ngIf="favs == tweet.user.favourites_count; else liked"> <img src="assets/icon/like-icon-blue.png" (click)="addfav()" alt=""> </span> <ng-template #liked> <img src="assets/icon/like-icon-green.png" alt="icon-notfollow"> </ng-template> <span *ngIf="tweet.favorite_count != 0;else fav"> {{favs}}</span> <ng-template #fav> {{favsm}} </ng-template> 
+      </ng-template>
+      <ng-template #actionEllipsis>
+          <span *ngIf="tweet.user.following;else notfollow"> <img src="assets/icon/twitt-icon-green.png" alt="icon-follow"></span> <ng-template #notfollow> <img src="assets/icon/twitt-icon-blue.png" alt="icon-notfollow"> </ng-template> {{tweet.user.followers_count}}
+      </ng-template>

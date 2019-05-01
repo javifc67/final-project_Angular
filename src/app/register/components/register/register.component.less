@@ -1,0 +1,49 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr 100px;
+    height: 100%;
+    margin: 0 auto;
+  div.contenido{
+    background:#fff;
+    padding: 24px;
+    min-height: 400px;
+    min-width: 200px;
+    max-width: 1000px;
+    border: 3px solid rgb(18, 18, 131);
+    border-radius: 5%
+  }
+  }
+  div.contenedor{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    padding: 30px 20px;
+    margin: 0 auto;
+  
+  } 
+  sa-hero, sa-info {
+    display: none;
+  }
+
+  sa-register-form {
+    flex: 1;
+  }
+
+  @media (max-width: 900px)
+  {
+    padding: 2%;
+    flex-direction: row;
+
+    sa-hero, sa-info {
+      flex: 1;
+      display: block;
+    }
+
+    sa-register-form {
+      flex-direction: row;
+      max-width: 500px;
+    }
+  }

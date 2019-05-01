@@ -1,0 +1,57 @@
+<nz-content style="margin:16px;">
+    <div style="padding:24px; background: #fff; min-height: 360px;">
+      <h2>
+        You can change your user profile here
+      </h2>
+      <hr>
+      <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+        <nz-form-control>
+          <h3> User name</h3>
+          <nz-input-group >
+
+            <input formControlName="fullName" nz-input placeholder="Username" />
+          </nz-input-group>
+          
+          <nz-form-explain *ngIf="validateForm.get('fullName')?.dirty && validateForm.get('fullName')?.errors"
+          >Please input your username!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+            <h3> User email</h3>
+            <nz-input-group >
+
+              <input formControlName="email" nz-input placeholder="Email" />
+            </nz-input-group>
+          
+          <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors"
+          >Please input your email!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+            <h3> User password</h3>
+            <nz-input-group >
+
+              <input formControlName="password" nz-input type="password" placeholder="Password" />
+            </nz-input-group>
+          
+          <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
+          >Please input your Password!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+            <h3></h3>
+            <button style="padding: 28px 40px; font-size: 1.5rem;" >Update</button>
+        
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    
+  </div>
+</nz-content>

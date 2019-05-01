@@ -1,0 +1,28 @@
+<nz-card style="width: 100%;margin-top: 16px">
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading" >
+      <nz-card-meta
+        [nzAvatar]="avatarTemplate"
+        nzTitle="{{user.name}}"
+        
+        
+      ></nz-card-meta>
+    </nz-skeleton>
+    <br/>
+    <hr/>
+    <h2>nombre de twitter: @{{user.screen_name}}</h2>
+    <h2>id de twitter: {{user.id}}</h2>
+    <h2>localozacíon: {{user.location}}</h2>
+    <h2>descripción: {{user.description}}</h2>
+    <h2>número de seguidores: {{user.followers_count}}</h2>
+    <h2>número de amigos: {{user.friends_count}}</h2>
+    <h2>fecha de creación de la cuenta: {{user.created_at}}</h2>
+    <h2>número de likes que has dado: {{user.favourites_count}}</h2>
+    <h2>verificado: {{user.verified}}</h2>
+    <h2>idioma: {{user.lang}}</h2>
+
+
+  </nz-card>
+  <ng-template #avatarTemplate>
+    <nz-avatar nzSrc="{{user.profile_image_url_https}}"></nz-avatar>
+    
+  </ng-template>

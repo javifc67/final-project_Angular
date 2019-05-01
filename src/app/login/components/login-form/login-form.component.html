@@ -1,30 +1,37 @@
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group >
+        <input type="text" nz-input formControlName="email" placeholder="Email" />
+      </nz-input-group>
 
-    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-control>
-          <nz-input-group [nzPrefix]="prefixUser">
-            <input formControlName="userName" nz-input placeholder="Username" />
-          </nz-input-group>
-          <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors"
-            >Please input your username!</nz-form-explain
-          >
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control>
-          <nz-input-group [nzPrefix]="prefixLock">
-            <input formControlName="password" nz-input type="password" placeholder="Password" />
-          </nz-input-group>
-          <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
-            >Please input your Password!</nz-form-explain
-          >
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control>
-          <button nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
-    <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
-    <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+      <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors"
+        >Please input your email!</nz-form-explain
+      >
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group >
+        <input type="password" nz-input formControlName="password" placeholder="Password" />
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
+        >Please input your Password!</nz-form-explain
+      >
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <label nz-checkbox formControlName="remember">
+        <span>Remember me</span>
+      </label>
+      <button style="padding: right;" nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+      <p>
+      Or <a routerLink="/register">register now!</a>
+      </p>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+<ng-template #prefixUser><i nz-icon type="file"></i></ng-template>
+<ng-template #prefixLock><i nz-icon type="file"></i></ng-template>

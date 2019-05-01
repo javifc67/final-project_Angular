@@ -1,0 +1,25 @@
+:host{
+    .head{
+        height: 100vh;
+    }
+    .main{
+       background-image: url('/assets/img/fondo1.jpg');
+       background-repeat: no-repeat;
+       background-size: cover;
+    }
+    .mainContent{
+        margin-top:3rem;
+    }
+    sa-site-layout-footer{
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        bottom: 0px
+    }
+    @media screen and (max-height: 700px) {
+        sa-site-layout-footer{
+           display: none;
+        }
+      }
+}
+
