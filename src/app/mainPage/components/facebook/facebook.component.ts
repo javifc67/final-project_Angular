@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { authFacebook } from '../../store/mainPage.actions';
+import { Store, Select } from '@ngxs/store';
+import { authFacebook, GetFacebookWall } from '../../store/mainPage.actions';
+import { Observable } from 'rxjs';
+import { Post } from '../../mainPage.models';
 
 @Component({
   selector: 'sa-facebook',
@@ -9,11 +11,13 @@ import { authFacebook } from '../../store/mainPage.actions';
 })
 export class facebookComponent implements OnInit {
 
+  @Select(state => state.main.fbWall) wall$: Observable<Post[]>;
   constructor(private store: Store) { }
 
   ngOnInit() {
+    this.store.dispatch(new GetFacebookWall());
   }
-  auth() {
+  authFb() {
     this.store.dispatch(new authFacebook());
   }
 }

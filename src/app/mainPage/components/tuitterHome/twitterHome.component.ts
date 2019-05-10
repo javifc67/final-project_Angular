@@ -17,7 +17,7 @@ export class twitterHomeComponent implements OnInit {
   isValid= false
   now
 
-  @Select(state => state.main.tweet) tweets$: Observable<Tweet[]>;
+  @Select(state => state.main.tweets) tweets$: Observable<Tweet[]>;
   @Select(state => state.main.userData) userData$: Observable<UserTw[]>;
 
   constructor(
@@ -44,9 +44,13 @@ export class twitterHomeComponent implements OnInit {
   authTW() {
     this.store.dispatch(new authTwitter());
   }
- /*  rt(){
-    this.store.dispatch(new Retweet(this.tweets.id));
-  } */
+  onChange(result: Date): void {
+    console.log('Selected Time: ', result);
+  }
+
+  onOk(result: Date): void {
+    this.date = result
+  }
 
   publish() {
     if (!this.content || !this.date) {
@@ -54,10 +58,5 @@ export class twitterHomeComponent implements OnInit {
     }
     this.store.dispatch(new postTweet({message: this.content, date: this.date}));
   }
-  exploreKeyPressed($event) {
-    if ($event.which === 13) {
-      this.store.dispatch(new postTweet({message: this.content, date: this.date})
-      );
-    }
-}
+  
 }

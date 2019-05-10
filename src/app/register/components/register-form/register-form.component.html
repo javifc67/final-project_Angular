@@ -3,11 +3,11 @@
       <nz-form-item>
         <nz-form-control>
             <nz-input-group >
-            <input type="text" formControlName="fullName" nz-input placeholder="Username" />
+            <input type="text" formControlName="fullName" nz-input placeholder="Facebook Name" />
           </nz-input-group>
 
           <nz-form-explain *ngIf="validateForm.get('fullName')?.dirty && validateForm.get('fullName')?.errors"
-            >Please input your username!</nz-form-explain
+            >Please input your facebook name!</nz-form-explain
           >
         </nz-form-control>
       </nz-form-item>
@@ -15,7 +15,7 @@
       <nz-form-item>
           <nz-form-control>
               <nz-input-group >
-              <input type="text" formControlName="twitterName" nz-input placeholder="Name in Twitter, ej: @example" />
+              <input type="text" formControlName="twitterName" nz-input placeholder="Twitter Name, ej: @example" />
             </nz-input-group>
   
             <nz-form-explain *ngIf="validateForm.get('twitterName')?.dirty && validateForm.get('twitterName')?.errors"

@@ -4,14 +4,15 @@ import { Store } from '@ngxs/store';
 
 
 @Component({
-  selector: 'sa-userTwitter',
-  templateUrl: './userTwitter.component.html',
-  styleUrls: ['./userTwitter.component.less']
+  selector: 'sa-fbPost',
+  templateUrl: './fbPost.component.html',
+  styleUrls: ['./fbPost.component.less']
 })
 
-export class userTwitterComponent implements OnInit{
-  @Input() user;
+export class fbPostComponent implements OnInit{
+  @Input() post;
   datestr
+  user = 'Javier Ferreño'
   formatDate(date) {
     var monthNames = [
       "January", "February", "March",
@@ -28,7 +29,7 @@ export class userTwitterComponent implements OnInit{
   }
   constructor(private store: Store) {}
   ngOnInit(){
-    const date = new Date(this.user.created_at)
+    const date = new Date(this.post.created_time)
     this.datestr = this.formatDate(date);
   }
 }

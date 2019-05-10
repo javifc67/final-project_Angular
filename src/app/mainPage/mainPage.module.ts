@@ -19,6 +19,7 @@ import { AuthModule } from '../auth/auth.module';
 import { twitterHomeComponent } from './components/tuitterHome/twitterHome.component';
 import { tweetComponent } from './components/tweet/tweet.component';
 import { userTwitterComponent } from './components/userTwitter/userTwitter.component';
+import { fbPostComponent } from './components/fcPost/fbPost.component';
 
 
 
@@ -33,6 +34,7 @@ import { userTwitterComponent } from './components/userTwitter/userTwitter.compo
     twitterHomeComponent,
     tweetComponent,
     userTwitterComponent,
+    fbPostComponent,
   ],
 
   imports: [

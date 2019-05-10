@@ -1,5 +1,5 @@
 import { State, Store, StateContext, Action, Selector } from '@ngxs/store';
-import { Main, Message, Tweet } from '../mainPage.models';
+import { Main, Message } from '../mainPage.models';
 import { MainService } from '../services/mainPage.service';
 import { authTwitter,
   postTweet,
@@ -11,7 +11,11 @@ import { authTwitter,
   RetweetFailed,
   postTweetSuccess,
   authFacebook,
-  AddFav } from './mainPage.actions';
+  AddFav, 
+  postTweetFailed,
+  GetFacebookWall,
+  GetFacebookWallSuccess,
+  GetFacebookWallFailed} from './mainPage.actions';
 import { tap, catchError } from 'rxjs/operators';
 
 @State<Main>({
@@ -34,9 +38,23 @@ export class MainState {
 
   @Action(postTweet)
     postTweet({ dispatch }: StateContext<Main>, { message }) {
-      return this.mainService.postTweet(message);
+      return this.mainService.postTweet(message).pipe(
+        tap((tweet) => dispatch(new postTweetSuccess(tweet))),
+        catchError(error => dispatch(new postTweetFailed(error.error)))
+      );
     }
+  @Action(postTweetSuccess)
+  postTweetSuccess(
+    { patchState, getState }: StateContext<Main>,
+    { tweet }: postTweetSuccess
+  ) {
+    patchState({
 
+      tweets: [tweet, ...getState().tweets]
+    }
+    )
+    };
+  
 
     @Action(GetTweets)
     getTweets({ dispatch }: StateContext<Main>) {
@@ -48,24 +66,59 @@ export class MainState {
   
     @Action(GetTweetsSuccess)
     getTweetsSuccess(
-      { setState, getState }: StateContext<Main>,
+      { patchState, getState }: StateContext<Main>,
       { main }: GetTweetsSuccess
     ) {
-      setState(main);
+      patchState(main);
       }
       
       @Action(Retweet, { cancelUncompleted: true })
       retweet({ dispatch }: StateContext<Main[]>, { tweet }: Retweet) {
         
-        return this.mainService.retweet(tweet)
-        
+        return this.mainService.retweet(tweet).pipe(
+          tap((tweet) => dispatch(new RetweetSuccess(tweet))),
+          catchError(error => dispatch(new RetweetFailed(error.error)))
+        );
       }
+
+      @Action(RetweetSuccess)
+      RetweetSuccess(
+        { patchState, getState }: StateContext<Main>,
+        { tweet }: RetweetSuccess
+      ) {
+        patchState({
+    
+          tweets: [tweet, ...getState().tweets]
+        }
+        )
+        };
+
       @Action(AddFav, { cancelUncompleted: true })
       addFav({ dispatch }: StateContext<Main[]>, { tweet }: AddFav) {
         
         return this.mainService.addFav(tweet)
         
       }
+
+
+      @Action(GetFacebookWall)
+      getFacebookWall({ dispatch }: StateContext<Main>) {
+        return this.mainService.getFbWall().pipe(
+          tap(main => dispatch(new GetFacebookWallSuccess(main))),
+          catchError(error => dispatch(new GetFacebookWallFailed(error.error)))
+        );
+      }
+    
+      @Action(GetFacebookWallSuccess)
+      getFacebookWallSuccess(
+        { patchState }: StateContext<Main>,
+        { wall }: GetFacebookWallSuccess
+      ) {
+        patchState({
+          fbWall: wall
+        });
+        }
+     
 }
           
           /* .pipe(

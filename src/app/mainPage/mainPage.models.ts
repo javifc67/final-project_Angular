@@ -1,6 +1,7 @@
 export interface Main {
   tweets: Tweet[];
   userData: UserTw;
+  fbWall?: Post[];
 }
 
 export interface UserTw{
@@ -26,11 +27,17 @@ export interface Message {
 }
 
 export interface Tweet{
-  created_at: number;
-  id: string;
+  created_at?: number;
+  id?: string;
   id_str: string;
   text: string;
   user: object;
   retweet_count: number;
   favorite_count: number;
+}
+
+export interface Post{
+  created_time: Date;
+  message: string;
+  id: string;
 }

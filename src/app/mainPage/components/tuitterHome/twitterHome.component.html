@@ -2,8 +2,17 @@
     <div  style="padding:24px; min-height: 360px;">
             <div *ngIf="( tweets$ | async );else auth">
                 
-                <textarea rows="4" nz-input [(ngModel)]="content" (keydown)="exploreKeyPressed($event)"></textarea>
-                <input id="date" [(ngModel)]="date" type="datetime-local" min="{{now}}" value="">
+                <textarea rows="4" nz-input [(ngModel)]="content"></textarea>
+                
+                <nz-date-picker
+                nzShowTime
+                nzFormat="yyyy-MM-dd HH:mm:ss"
+                nzPlaceHolder="Select Time"
+                (ngModelChange)="onChange($event)"
+                (nzOnOk)="onOk($event)"
+              ></nz-date-picker>
+             
+                
                 <button (click)="publish()" >publicar tweet</button>
                 <div class="TW">
                     <div class="user">

@@ -1,6 +1,19 @@
 <nz-content style="margin:16px;">
   <div style="padding:24px; background: #fff; min-height: 360px;">
-      <!-- <a (click)="auth()" >Facebook</a> -->
-      WIP, facebook is comming :D
+
+
+      <div *ngIf="( wall$ | async );else auth">
+                
+      
+                        <div class="postFb">
+
+                <ng-container *ngFor="let item of (wall$ | async)">
+                    
+                    <sa-fbPost [post]="item"></sa-fbPost>
+                    
+                </ng-container>
+</div>
+</div>
+<ng-template #auth>Aún no estas autenticado con Facebook.<a (click)="authFb()" > Pincha aquí para autenticarte </a></ng-template>
   </div>
 </nz-content>

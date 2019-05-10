@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Message, Main } from '../mainPage.models';
+import { Message, Main, Tweet } from '../mainPage.models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class MainService {
   }
 
   postTweet(message: Message) {
-    return this.http.post<Message>(`${environment.apiBaseUrl}/twitter/tweet`, message);
+    return this.http.post<Tweet>(`${environment.apiBaseUrl}/twitter/tweet`, message);
   }
 
   getTweets() {
@@ -26,7 +26,7 @@ export class MainService {
     const data = {
       tweetId: tweet
     }
-    return this.http.post(`${environment.apiBaseUrl}/twitter/retweet`, data);
+    return this.http.post<Tweet>(`${environment.apiBaseUrl}/twitter/retweet`, data);
   }
   addFav(tweet) {
     const data = {
@@ -36,7 +36,10 @@ export class MainService {
   }
 
   authFacebook() {
-    window.location.href = `${environment.apiBaseUrl}/login/facebook`
+    window.location.href = `http://localhost:8000/api/login/facebook`
+  }
+  getFbWall() {
+    return this.http.get<any>(`${environment.apiBaseUrl}/facebook/wall`);
   }
   
 }

@@ -25,18 +25,20 @@ export class profileComponent implements OnInit {
   ngOnInit(): void {
   
   this.validateForm = this.fb.group({
-    fullName: [null, [Validators.required]],
-    email: [null, [Validators.required, MailValidator]],
-    password: [null, [Validators.required]],
+    fullName: [null, []],
+    twitterName: [null, []],
+    email: [null, [MailValidator]],
+    password: [null, []],
   },
   {
     updateOn: 'blur',
   }
   );
-  this.user$.subscribe(({ fullName, email }) => {
+  this.user$.subscribe(({ fullName, email, twitterName }) => {
 
     this.validateForm.setValue({
       fullName: fullName || '',
+      twitterName: '@' + twitterName || '',
       email: email || '',
       password: ''
     })

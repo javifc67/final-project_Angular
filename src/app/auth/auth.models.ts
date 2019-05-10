@@ -32,4 +32,5 @@ export interface Profile {
   uuid: string;
   fullName: string;
   email: string;
+  twitterName: string;
 }

@@ -18,6 +18,21 @@
           >
         </nz-form-control>
       </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <h3> Twitter name</h3>
+          <nz-input-group >
+
+            <input formControlName="twitterName" nz-input placeholder="@example" />
+          </nz-input-group>
+          
+          <nz-form-explain *ngIf="validateForm.get('twitterName')?.dirty && validateForm.get('twitterName')?.errors"
+          >Please input your twitterName!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+
       <nz-form-item>
         <nz-form-control>
             <h3> User email</h3>

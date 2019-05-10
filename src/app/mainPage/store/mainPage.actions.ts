@@ -1,4 +1,4 @@
-import { Message, Tweet, UserTw, Main } from '../mainPage.models';
+import { Message, Tweet, UserTw, Main, Post } from '../mainPage.models';
 
 
 export class authTwitter {
@@ -22,7 +22,7 @@ export class postTweet {
 
 export class postTweetSuccess {
   static readonly type = '[Main] PostTweetSuccess';
-  constructor(public message: Message) {}
+  constructor(public tweet: Tweet) {}
 }
 
 export class postTweetFailed {
@@ -52,7 +52,7 @@ export class Retweet {
 
 export class RetweetSuccess {
   static readonly type = '[Main] Retweet Success';
-  constructor(public tweet: string) {}
+  constructor(public tweet: Tweet) {}
 }
 
 export class RetweetFailed {
@@ -76,4 +76,18 @@ export class AddFavFailed {
 
 export class authFacebook {
   static type = '[Main] Facebook';
+}
+export class GetFacebookWall {
+  static readonly type = '[Main] GetFacebookWall';
+  constructor() {}
+}
+
+export class GetFacebookWallSuccess {
+  static readonly type = '[Main] GetFacebookWallSuccess';
+  constructor(public wall: Post[]) {}
+}
+
+export class GetFacebookWallFailed {
+  static readonly type = '[Main] GetFacebookWallFailed';
+  constructor(public errors: Error[]) {}
 }
