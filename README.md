@@ -8,3 +8,4 @@ to run you will need:
 ·run ng serve in angular
 ·run node index in node.js
 ·mongodb
+-twitter and facebook account
